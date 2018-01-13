@@ -1,8 +1,8 @@
 #pragma once
 
-#include <UI\UIUtil.h>
+#include <UI/UIUtil.h>
 
-#include <Utilities\UtilityTypes.h>
+#include <Utilities/UtilityTypes.h>
 
 #include <functional>
 #include <type_traits>

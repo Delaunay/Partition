@@ -19,8 +19,9 @@ GroupSources(tests)
 file(GLOB_RECURSE TEST_SOURCES */*.cpp)
 file(GLOB_RECURSE TEST_HEADERS */*.h)
 
-ADD_EXECUTABLE(Tests GtestMain.cpp ${TEST_SOURCES} ${TEST_HEADERS})
-ADD_DEPENDENCIES(Tests gtest)
-TARGET_LINK_LIBRARIES(Tests partition gtest)
+# GtestMain.cpp
+ADD_EXECUTABLE(Tests ${TEST_SOURCES} ${TEST_HEADERS})
+ADD_DEPENDENCIES(Tests gtest gtest_main)
+TARGET_LINK_LIBRARIES(Tests partition gtest gtest_main)
 SET_PROPERTY(TARGET Tests PROPERTY CXX_STANDARD 17)
 

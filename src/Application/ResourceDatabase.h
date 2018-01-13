@@ -1,12 +1,12 @@
 #pragma once
 
-#include <Application\ResourceDatabaseTypes.h>
+#include <Application/ResourceDatabaseTypes.h>
 
-#include <Component\transform_t.h>
+#include <Component/transform_t.h>
 
-#include <Utilities\UtilityTypes.h>
+#include <Utilities/UtilityTypes.h>
 
-#include <Graphics\DirectX.h>
+#include <Graphics/DirectX.h>
 
 namespace pn::rdb {
 

@@ -1,9 +1,9 @@
 #pragma once
 
-#include <Utilities\Math.h>
-#include <Utilities\UtilityTypes.h>
+#include <Utilities/Math.h>
+#include <Utilities/UtilityTypes.h>
 
-#include <UI\EditStruct.h>
+#include <UI/EditStruct.h>
 
 namespace pn {
 

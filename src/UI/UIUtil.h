@@ -1,12 +1,12 @@
 #pragma once
 
-#include <imgui\imgui.h>
-#include <imgui\imgui_impl_dx11.h>
+#include <imgui/imgui.h>
+#include <imgui/imgui_impl_dx11.h>
 
-#include <Utilities\UtilityTypes.h>
-#include <Utilities\Math.h>
+#include <Utilities/UtilityTypes.h>
+#include <Utilities/Math.h>
 
-#include <Component\transform_t.h>
+#include <Component/transform_t.h>
 
 #include <type_traits>
 

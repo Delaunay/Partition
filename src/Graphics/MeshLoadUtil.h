@@ -3,9 +3,9 @@
 #include <string>
 #include <vector>
 
-#include <Application\ResourceDatabaseTypes.h>
-#include <Graphics\DirectX.h>
-#include <Utilities\UtilityTypes.h>
+#include <Application/ResourceDatabaseTypes.h>
+#include <Graphics/DirectX.h>
+#include <Utilities/UtilityTypes.h>
 
 namespace pn {
 

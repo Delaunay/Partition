@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Graphics\DirectX.h>
+#include <Graphics/DirectX.h>
 
 namespace pn {
 

@@ -2,7 +2,7 @@
 
 #include <Windows.h>
 
-#include <Utilities\UtilityTypes.h>
+#include <Utilities/UtilityTypes.h>
 
 namespace pn {
 

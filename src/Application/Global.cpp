@@ -1,4 +1,4 @@
-#include <Application\Global.h>
+#include <Application/Global.h>
 
 namespace pn {
 
@@ -17,13 +17,9 @@ bool exit;
 
 // ---------- FUNCTIONS ---------
 
-void Exit() {
-	exit = true;
-}
-bool ShouldExit() {
-	return exit;
-}
+void Exit() { exit = true; }
+bool ShouldExit() { return exit; }
 
-}
+} // namespace app
 
-}
+} // namespace pn

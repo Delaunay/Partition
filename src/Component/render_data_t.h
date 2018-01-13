@@ -1,10 +1,10 @@
 #pragma once
 
-#include <Component\transform_t.h>
+#include <Component/transform_t.h>
 
-#include <Graphics\DirectX.h>
+#include <Graphics/DirectX.h>
 
-#include <Application\ResourceDatabase.h>
+#include <Application/ResourceDatabase.h>
 
 namespace pn {
 

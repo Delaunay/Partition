@@ -210,11 +210,11 @@
 //
 // SOURCE STATISTICS (based on v0.6c, 2050 LOC)
 //
-//   Documentation & header file        520 LOC  \___ 660 LOC documentation
+//   Documentation & header file        520 LOC  /___ 660 LOC documentation
 //   Sample code                        140 LOC  /
 //   Truetype parsing                   620 LOC  ---- 620 LOC TrueType
-//   Software rasterization             240 LOC  \                           .
-//   Curve tesselation                  120 LOC   \__ 550 LOC Bitmap creation
+//   Software rasterization             240 LOC  /                           .
+//   Curve tesselation                  120 LOC   /__ 550 LOC Bitmap creation
 //   Bitmap management                  100 LOC   /
 //   Baked bitmap interface              70 LOC  /
 //   Font name matching & access        150 LOC  ---- 150 
@@ -306,7 +306,7 @@ int main(int argc, char **argv)
    for (j=0; j < h; ++j) {
       for (i=0; i < w; ++i)
          putchar(" .:ioVM@"[bitmap[j*w+i]>>5]);
-      putchar('\n');
+      putchar('/n');
    }
    return 0;
 }
@@ -366,7 +366,7 @@ int main(int arg, char **argv)
    for (j=0; j < 20; ++j) {
       for (i=0; i < 78; ++i)
          putchar(" .:ioVM@"[screen[j][i]>>5]);
-      putchar('\n');
+      putchar('/n');
    }
 
    return 0;

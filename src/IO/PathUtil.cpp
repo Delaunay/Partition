@@ -1,4 +1,4 @@
-#include <IO\PathUtil.h>
+#include <IO/PathUtil.h>
 
 namespace pn {
 
@@ -10,28 +10,18 @@ static string resource_dir;
 // --------- FUNCTIONS -----------------
 
 void InitPathUtil() {
-	working_dir		= "";
-	resource_dir	= "";
+    working_dir  = "";
+    resource_dir = "";
 }
 
-string GetWorkingDirectory() {
-	return working_dir;
-}
+string GetWorkingDirectory() { return working_dir; }
 
-void SetWorkingDirectory(const string& directory) {
-	working_dir = directory + "/";
-}
+void SetWorkingDirectory(const string &directory) { working_dir = directory + "/"; }
 
-string GetResourceDirectory() {
-	return resource_dir;
-}
+string GetResourceDirectory() { return resource_dir; }
 
-void SetResourceDirectoryName(const string& name) {
-	resource_dir = working_dir + name + "/";
-}
+void SetResourceDirectoryName(const string &name) { resource_dir = working_dir + name + "/"; }
 
-string GetResourcePath(const string& resource_name) {
-	return resource_dir + resource_name;
-}
+string GetResourcePath(const string &resource_name) { return resource_dir + resource_name; }
 
 } // namespace pn

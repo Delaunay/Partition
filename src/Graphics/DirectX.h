@@ -7,14 +7,14 @@
 
 #include <wrl.h> // ComPtr
 
-#include <Application\ResourceDatabaseTypes.h>
+#include <Application/ResourceDatabaseTypes.h>
 
-#include <Graphics\Window.h>
-#include <Graphics\ProjectionMatrix.h>
+#include <Graphics/Window.h>
+#include <Graphics/ProjectionMatrix.h>
 
-#include <Utilities\Logging.h>
-#include <Utilities\Math.h>
-#include <Utilities\UtilityTypes.h>
+#include <Utilities/Logging.h>
+#include <Utilities/Math.h>
+#include <Utilities/UtilityTypes.h>
 
 namespace pn {
 
@@ -314,7 +314,7 @@ auto					CreateConstantBuffer(dx_device device, const ConstantDataType* c_data, 
 }
 
 template<typename ConstantDataType>
-auto					CreateConstantBuffer(dx_device device, const pn::vector<ConstantDataType>& c_data) {
+auto CreateConstantBuffer(dx_device device, const pn::vector<ConstantDataType>& c_data) {
 	return CreateConstantBuffer(device, c_data.data(), c_data.size());
 }
 

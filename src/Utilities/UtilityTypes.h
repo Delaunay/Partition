@@ -7,8 +7,8 @@
 
 #include <string.h>
 
-#include <Utilities\Memory.h>
-#include <Utilities\Logging.h>
+#include <Utilities/Memory.h>
+#include <Utilities/Logging.h>
 
 namespace pn {
 

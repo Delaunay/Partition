@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Utilities\UtilityTypes.h>
-#include <Graphics\DirectX.h>
+#include <Utilities/UtilityTypes.h>
+#include <Graphics/DirectX.h>
 
 namespace pn {
 

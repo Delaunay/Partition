@@ -1,9 +1,9 @@
 #pragma once
 
-#include <Utilities\UtilityTypes.h>
-#include <Utilities\Math.h>
+#include <Utilities/UtilityTypes.h>
+#include <Utilities/Math.h>
 
-#include <Graphics\Window.h>
+#include <Graphics/Window.h>
 
 namespace pn {
 
