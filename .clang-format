@@ -8,3 +8,4 @@ Cpp11BracedListStyle: true
 PointerAlignment: Right
 SpaceBeforeParens: Never
 SpaceInEmptyParentheses: false
+AccessModifierOffset: 0
