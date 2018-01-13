@@ -63,7 +63,7 @@ TEST(BasicFrameStringTest, EqualityTest) {
     frame_string::SetFrameAllocator(&a);
 
     frame_string s("this is a long string /n and it's a lot of words...");
-    auto s2 = s;
+    auto         s2 = s;
 
     ASSERT_TRUE(s == "this is a long string /n and it's a lot of words...");
 
@@ -98,7 +98,7 @@ TEST(BasicFrameStringTest, ConcatenationTest) {
     {
         frame_string s("thisa");
         frame_string s2("THISA");
-        auto b = s + s2;
+        auto         b = s + s2;
 
         ASSERT_TRUE(b == "thisaTHISA");
         ASSERT_FALSE(a.HasFree());
@@ -108,7 +108,7 @@ TEST(BasicFrameStringTest, ConcatenationTest) {
 
     {
         frame_string s("thisa");
-        auto b = "THISA" + s;
+        auto         b = "THISA" + s;
 
         ASSERT_TRUE(b == "THISAthisa");
         ASSERT_TRUE(a.HasFree(5));
@@ -118,8 +118,8 @@ TEST(BasicFrameStringTest, ConcatenationTest) {
 
     {
         frame_string s("thisa");
-        pn::string s2("THISA");
-        auto b = s + s2;
+        pn::string   s2("THISA");
+        auto         b = s + s2;
 
         ASSERT_TRUE(b == "thisaTHISA");
         ASSERT_TRUE(a.HasFree(5));

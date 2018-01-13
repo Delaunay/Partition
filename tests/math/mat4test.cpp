@@ -112,23 +112,23 @@ TEST(Mat4fTest, EulerRotationTest) {
     }
 
     for(float t = -TWOPI; t <= TWOPI; t += 0.1f) {
-        mat4f m   = EulerToRotationMatrix(t, 0.0f, 0.0f);
-        auto xm   = RotationX(t);
-        auto diff = m - xm;
+        mat4f m    = EulerToRotationMatrix(t, 0.0f, 0.0f);
+        auto  xm   = RotationX(t);
+        auto  diff = m - xm;
         ASSERT_TRUE(IsEqual(diff, mat4f::Zero));
     }
 
     for(float t = -TWOPI; t <= TWOPI; t += 0.1f) {
-        mat4f m   = EulerToRotationMatrix(0, t, 0.0f);
-        auto xm   = RotationY(t);
-        auto diff = m - xm;
+        mat4f m    = EulerToRotationMatrix(0, t, 0.0f);
+        auto  xm   = RotationY(t);
+        auto  diff = m - xm;
         ASSERT_TRUE(IsEqual(diff, mat4f::Zero));
     }
 
     for(float t = -TWOPI; t <= TWOPI; t += 0.1f) {
-        mat4f m   = EulerToRotationMatrix(0, 0, t);
-        auto xm   = RotationZ(t);
-        auto diff = m - xm;
+        mat4f m    = EulerToRotationMatrix(0, 0, t);
+        auto  xm   = RotationZ(t);
+        auto  diff = m - xm;
         ASSERT_TRUE(IsEqual(diff, mat4f::Zero));
     }
 
@@ -160,8 +160,8 @@ TEST(Mat4fTest, EulerRotationTest) {
 }
 
 TEST(Mat4fTest, PerspectiveFovTest) {
-    mat4f m = PerspectiveFov(Rad(60.0f), 1.3f, 0.01f, 1000.0f);
-    auto m2 = DirectX::XMMatrixPerspectiveFovLH(Rad(60.0f), 1.3f, 0.01f, 1000.0f);
+    mat4f m  = PerspectiveFov(Rad(60.0f), 1.3f, 0.01f, 1000.0f);
+    auto  m2 = DirectX::XMMatrixPerspectiveFovLH(Rad(60.0f), 1.3f, 0.01f, 1000.0f);
     ASSERT_TRUE(m == m2);
 
     /*#ifdef NDEBUG
@@ -179,8 +179,8 @@ TEST(Mat4fTest, PerspectiveFovTest) {
 
 TEST(Mat4fTest, OrthographicTest) {
     const float w = 1231.0f, h = 642.0f, n = 0.0001f, f = 1000.0f;
-    mat4f m = Orthographic(w, h, n, f);
-    auto m2 = DirectX::XMMatrixOrthographicLH(w, h, n, f);
+    mat4f       m  = Orthographic(w, h, n, f);
+    auto        m2 = DirectX::XMMatrixOrthographicLH(w, h, n, f);
     ASSERT_TRUE(m == m2);
 }
 
@@ -189,17 +189,17 @@ TEST(Mat4fTest, LookAtTest) {
         vec3f p(1.0f, -3.0f, 5.0f);
         vec3f f(0.0f, 0.3f, 0.3f);
         vec3f u(0.0f, 1.0f, 0.0f);
-        mat4f m = LookAt(p, f, u);
-        auto m2 = DirectX::XMMatrixLookAtLH({p.x, p.y, p.z}, {f.x, f.y, f.z}, {u.x, u.y, u.z});
+        mat4f m  = LookAt(p, f, u);
+        auto  m2 = DirectX::XMMatrixLookAtLH({p.x, p.y, p.z}, {f.x, f.y, f.z}, {u.x, u.y, u.z});
         ASSERT_TRUE(m == m2);
     }
 
     {
         vec3f p(1.0f, -3.0f, 5.0f);
         vec3f u(0.0f, 1.0f, 0.0f);
-        vec3f f = u;
-        mat4f m = LookAt(p, f, u);
-        auto m2 = DirectX::XMMatrixLookAtLH({p.x, p.y, p.z}, {f.x, f.y, f.z}, {u.x, u.y, u.z});
+        vec3f f  = u;
+        mat4f m  = LookAt(p, f, u);
+        auto  m2 = DirectX::XMMatrixLookAtLH({p.x, p.y, p.z}, {f.x, f.y, f.z}, {u.x, u.y, u.z});
         ASSERT_TRUE(m == m2);
     }
 }
@@ -211,7 +211,7 @@ TEST(Mat4fTest, ToCoordinateSystemTest) {
     mat4f m = ToCoordinateSystem(p, f, u);
 
     vec4f pos(1.0f, -3.0f, 5.0f, 1.0f);
-    auto r = pos * m;
+    auto  r = pos * m;
     ASSERT_TRUE(r.xyz() == vec3f::Zero);
 
     vec4f x = vec4f::UnitX;

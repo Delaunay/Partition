@@ -5,11 +5,11 @@ using pn::pool_allocator;
 
 namespace MemoryUnitTest {
 struct blob {
-    int i;
-    int j;
-    int k;
+    int    i;
+    int    j;
+    int    k;
     double d;
-    float f;
+    float  f;
     blob() {}
     blob(int i, int j, int k, double d, float f) : i(i), j(j), k(k), d(d), f(f) {}
 };
