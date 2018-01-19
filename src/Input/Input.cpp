@@ -13,16 +13,16 @@ namespace input {
 // -------- VARIABLES ---------------
 
 input_state_t input_state;
-pn::string input_characters;
+pn::string    input_characters;
 
 // ------- FUNCTIONS --------
 
 void InitInput() {
     unsigned char i = 0;
     do {
-        auto &cur_key = input_state.keys[i];
-        cur_key       = key_state::RELEASED;
-        ++i;
+	auto &cur_key = input_state.keys[i];
+	cur_key       = key_state::RELEASED;
+	++i;
     } while(i != 0);
     input_state.mouse_pos   = {0, 0};
     input_state.mouse_wheel = mouse_wheel_state::NO_CHANGE;
@@ -33,19 +33,19 @@ void InputOnEndOfFrame() {
 
     unsigned char i = 0U;
     do {
-        const auto cur_key       = static_cast<input_key>(i);
-        const auto cur_key_state = GetKeyState(cur_key);
-        if(cur_key_state == key_state::JUST_RELEASED) {
-            SetKeyState(cur_key, key_state::RELEASED);
-        } else if(cur_key_state == key_state::JUST_PRESSED) {
-            SetKeyState(cur_key, key_state::PRESSED);
-        }
-        ++i;
+	const auto cur_key       = static_cast<input_key>(i);
+	const auto cur_key_state = GetKeyState(cur_key);
+	if(cur_key_state == key_state::JUST_RELEASED) {
+	    SetKeyState(cur_key, key_state::RELEASED);
+	} else if(cur_key_state == key_state::JUST_PRESSED) {
+	    SetKeyState(cur_key, key_state::PRESSED);
+	}
+	++i;
     } while(i != 0);
 
     if(GetMouseWheelState() == mouse_wheel_state::SCROLL_DOWN ||
        GetMouseWheelState() == mouse_wheel_state::SCROLL_UP) {
-        SetMouseWheelState(mouse_wheel_state::NO_CHANGE);
+	SetMouseWheelState(mouse_wheel_state::NO_CHANGE);
     }
 }
 

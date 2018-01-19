@@ -37,7 +37,7 @@ const vec4f vec4f::UnitW = vec4f(0.0f, 0.0f, 0.0f, 1.0f);
 const quaternion quaternion::Zero     = quaternion(0.0f, 0.0f, 0.0f, 0.0f);
 const quaternion quaternion::Identity = quaternion(0.0f, 0.0f, 0.0f, 1.0f);
 
-//clang-format off
+// clang-format off
 const mat4f mat4f::Identity = mat4f(
 	1.0f, 0.0f, 0.0f, 0.0f, 
 	0.0f, 1.0f, 0.0f, 0.0f, 
@@ -55,19 +55,19 @@ const mat4f mat4f::One  = mat4f(
 	1.0f, 1.0f, 1.0f, 1.0f, 
 	1.0f, 1.0f, 1.0f, 1.0f, 
 	1.0f, 1.0f, 1.0f, 1.0f);
-//clang-format on
+// clang-format on
 #pragma endregion
 
 #pragma region Matrix Functions
 
 mat4f Transpose(const mat4f &m) {
-	//clang-format off
+    // clang-format off
     return mat4f(
 		m._00, m._10, m._20, m._30, 
 		m._01, m._11, m._21, m._31, 
 		m._02, m._12, m._22, m._32,
         m._03, m._13, m._23, m._33);
-	//clang-format on
+    // clang-format on
 }
 mat4f Inverse(const mat4f &in) {
     // from
@@ -88,7 +88,7 @@ mat4f Inverse(const mat4f &in) {
     float c0 = in._20 * in._31 - in._30 * in._21;
 
     // Should check for 0 determinant
-	// You can do (in + Identidy * eps) to make sure the matrix is always invertible
+    // You can do (in + Identidy * eps) to make sure the matrix is always invertible
 
     float invdet = 1 / (s0 * c5 - s1 * c4 + s2 * c3 + s3 * c2 - s4 * c1 + s5 * c0);
 
@@ -119,59 +119,59 @@ mat4f Translation(const vec3f &translation) {
     return Translation(translation.x, translation.y, translation.z);
 }
 mat4f Translation(const float xt, const float yt, const float zt) {
-	//clang-format off
+    // clang-format off
 	return mat4f(
 		1.0f, 0.0f, 0.0f, 0.0f, 
 		0.0f, 1.0f, 0.0f, 0.0f, 
 		0.0f, 0.0f, 1.0f, 0.0f, 
 		xt,     yt,   zt, 1.0f);
-	//clang-format on
+    // clang-format on
 }
 
 mat4f Scale(const float scale) { return Scale(scale, scale, scale); }
 mat4f Scale(const vec3f &scale) { return Scale(scale.x, scale.y, scale.z); }
 mat4f Scale(const float xs, const float ys, const float zs) {
-	//clang-format off
+    // clang-format off
 	return mat4f(
 		  xs, 0.0f, 0.0f, 0.0f, 
 		0.0f,   ys, 0.0f, 0.0f, 
 		0.0f, 0.0f,   zs, 0.0f, 
 		0.0f, 0.0f, 0.0f, 1.0f);
-	//clang-format on
+    // clang-format on
 }
 
 mat4f RotationX(const float rad) {
     const float cos_t = cosf(rad);
     const float sin_t = sinf(rad);
-	//clang-format off
+    // clang-format off
     return mat4f(
 		1.0f,   0.0f,  0.0f, 0.0f, 
 		0.0f,  cos_t, sin_t, 0.0f, 
 		0.0f, -sin_t, cos_t, 0.0f, 
 		0.0f,   0.0f,  0.0f, 1.0f);
-	//clang-format on
+    // clang-format on
 }
 mat4f RotationY(const float rad) {
     const float cos_t = cosf(rad);
     const float sin_t = sinf(rad);
-	//clang-format off
+    // clang-format off
     return mat4f(
 		cos_t, 0.0f, -sin_t, 0.0f, 
 		 0.0f, 1.0f,   0.0f, 0.0f, 
 		sin_t, 0.0f,  cos_t, 0.0f,
 		 0.0f, 0.0f,   0.0f, 1.0f);
-	//clang-format on
+    // clang-format on
 }
 mat4f RotationZ(const float rad) {
     const float cos_t = cosf(rad);
     const float sin_t = sinf(rad);
-	//clang-format off
+    // clang-format off
     return mat4f(
 		 cos_t, sin_t, 0.0f, 0.0f, 
 		-sin_t, cos_t, 0.0f, 0.0f,
 		  0.0f,  0.0f, 1.0f, 0.0f, 
 	   	  0.0f,  0.0f, 0.0f, 1.0f);
-	//clang-format on
+    // clang-format on
 }
 
 mat4f SRTMatrix(const vec3f &scale, const vec3f &euler_angles, const vec3f &translation) {
@@ -223,13 +223,13 @@ mat4f EulerToRotationMatrix(const float pitch, const float yaw, const float roll
     const float sr_cp = sr * cp;
     const float cr_cp = cr * cp;
 
-	//clang-format off
+    // clang-format off
     return Transpose(mat4f(
 		cr * cy - sr * sy_sp,      -sr_cp, sr * sp * cy + cr * sy, 0.0f,
         sr * cy + cr * sy_sp,       cr_cp, sr * sy - cr * cy * sp, 0.0f,
 		            -cp * sy,          sp,                cp * cy, 0.0f,
 		                0.0f,        0.0f,                   0.0f, 1.0f));
-	//clang-format on
+    // clang-format on
 }
 mat4f AxisAngleToRotationMatrix(const vec3f &axis, const float angle) {
     return QuaternionToRotationMatrix(AxisAngleToQuaternion(axis, angle));
@@ -239,23 +239,23 @@ mat4f PerspectiveFov(const float fov, const float aspect_ratio, const float near
                      const float far_z) {
     const float a1 = 1 / tanf(fov / 2.0f);
     const float d  = far_z - near_z;
-	//clang-format off
+    // clang-format off
     return mat4f(
 		a1 / aspect_ratio, 0.0,                   0.0, 0.0, 
 		              0.0,  a1,                   0.0, 0.0, 
 		              0.0, 0.0,             far_z / d, 1.0, 
 		              0.0, 0.0, -(far_z * near_z) / d, 0.0);
-	//clang-format on
+    // clang-format on
 }
 mat4f Orthographic(const float width, const float height, const float near_z, const float far_z) {
     const float d = far_z - near_z;
-	//clang-format off
+    // clang-format off
     return mat4f(
 		2.0f / width,          0.0f,        0.0f, 0.0f, 
 	          	0.0f, 2.0f / height,        0.0f, 0.0f, 
 	        	0.0f,          0.0f,       1 / d, 0.0f, 
 		        0.0f,          0.0f, -near_z / d, 1.0f);
-	//clang-format on
+    // clang-format on
 }
 
 mat4f FromCoordinateSystem(const vec3f &origin, const vec3f &forward, const vec3f &up) {
@@ -289,43 +289,43 @@ mat4f QuaternionToRotationMatrix(const quaternion &q) {
 
     const float z_w = q.z * q.w;
 
-	//clang-format off
+    // clang-format off
     return mat4f(
 		1 - 2 * (sy + sz),   2 * (x_y + z_w),   2 * (x_z - y_w), 0.0f, 
 		  2 * (x_y - z_w), 1 - 2 * (sx + sz),   2 * (y_z + x_w), 0.0f, 
 	   	  2 * (x_z + y_w),   2 * (y_z - x_w), 1 - 2 * (sx + sy), 0.0f, 
 		             0.0f,              0.0f,              0.0f, 1.0f);
-	//clang-format on
+    // clang-format on
 }
 quaternion RotationMatrixToQuaternion(const mat4f &m) {
     const float trace = m._00 + m._11 + m._22;
-    quaternion q;
+    quaternion  q;
     if(trace > 0) {
-        float s = 0.5f / sqrtf(trace + 1.0f);
-        q.w     = 0.25f / s;
-        q.x     = (m._21 - m._12) * s;
-        q.y     = (m._02 - m._20) * s;
-        q.z     = (m._10 - m._01) * s;
+	float s = 0.5f / sqrtf(trace + 1.0f);
+	q.w     = 0.25f / s;
+	q.x     = (m._21 - m._12) * s;
+	q.y     = (m._02 - m._20) * s;
+	q.z     = (m._10 - m._01) * s;
     } else {
-        if(m._00 > m._11 && m._00 > m._22) {
-            float s = 2.0f * sqrtf(1.0f + m._00 - m._11 - m._22);
-            q.w     = (m._21 - m._12) / s;
-            q.x     = 0.25f * s;
-            q.y     = (m._01 + m._10) / s;
-            q.z     = (m._02 + m._20) / s;
-        } else if(m._11 > m._22) {
-            float s = 2.0f * sqrtf(1.0f + m._11 - m._00 - m._22);
-            q.w     = (m._02 - m._20) / s;
-            q.x     = (m._01 + m._10) / s;
-            q.y     = 0.25f * s;
-            q.z     = (m._12 + m._21) / s;
-        } else {
-            float s = 2.0f * sqrtf(1.0f + m._22 - m._00 - m._11);
-            q.w     = (m._10 - m._01) / s;
-            q.x     = (m._02 + m._20) / s;
-            q.y     = (m._12 + m._21) / s;
-            q.z     = 0.25f * s;
-        }
+	if(m._00 > m._11 && m._00 > m._22) {
+	    float s = 2.0f * sqrtf(1.0f + m._00 - m._11 - m._22);
+	    q.w     = (m._21 - m._12) / s;
+	    q.x     = 0.25f * s;
+	    q.y     = (m._01 + m._10) / s;
+	    q.z     = (m._02 + m._20) / s;
+	} else if(m._11 > m._22) {
+	    float s = 2.0f * sqrtf(1.0f + m._11 - m._00 - m._22);
+	    q.w     = (m._02 - m._20) / s;
+	    q.x     = (m._01 + m._10) / s;
+	    q.y     = 0.25f * s;
+	    q.z     = (m._12 + m._21) / s;
+	} else {
+	    float s = 2.0f * sqrtf(1.0f + m._22 - m._00 - m._11);
+	    q.w     = (m._10 - m._01) / s;
+	    q.x     = (m._02 + m._20) / s;
+	    q.y     = (m._12 + m._21) / s;
+	    q.z     = 0.25f * s;
+	}
     }
     return Normalize(q);
 }

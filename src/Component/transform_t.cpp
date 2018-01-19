@@ -8,11 +8,11 @@
 namespace pn {
 
 pn::mat4f LocalToWorldMatrix(const transform_t &transform) {
-    auto cur_srt     = TransformToMatrix(transform);
+    auto  cur_srt    = TransformToMatrix(transform);
     auto *cur_parent = transform.parent;
     while(cur_parent != nullptr) {
-        cur_srt *= TransformToMatrix(*cur_parent);
-        cur_parent = cur_parent->parent;
+	cur_srt *= TransformToMatrix(*cur_parent);
+	cur_parent = cur_parent->parent;
     }
     return cur_srt;
 }

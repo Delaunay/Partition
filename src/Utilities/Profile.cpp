@@ -17,7 +17,7 @@ using namespace std::literals::chrono_literals;
 namespace pn {
 
 struct profile_data {
-    string name;
+    string            name;
     time_point<Clock> start_time;
 };
 
@@ -28,10 +28,10 @@ void StartProfile(const string &name) {
     pn::PushBack(profiling_stack, data);
 }
 void EndProfile() {
-    time_point<Clock> now = Clock::now();
-    auto current_profile  = pn::Pop(profiling_stack);
-    auto diff             = duration_cast<milliseconds>(now - current_profile.start_time);
-    auto ms               = diff.count();
+    time_point<Clock> now             = Clock::now();
+    auto              current_profile = pn::Pop(profiling_stack);
+    auto              diff = duration_cast<milliseconds>(now - current_profile.start_time);
+    auto              ms   = diff.count();
     Log("[ PROFILE ] {} took {} ms", current_profile.name, ms);
 }
 

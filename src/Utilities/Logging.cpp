@@ -25,21 +25,21 @@ std::string ErrMsg(const DWORD error) {
 
 void InitLogger() {
     try {
-        pn::vector<spdlog::sink_ptr> sinks;
+	pn::vector<spdlog::sink_ptr> sinks;
 
-        auto stdout_sink = std::make_shared<spdlog::sinks::stdout_sink_mt>();
-        auto file_sink = std::make_shared<spdlog::sinks::simple_file_sink_mt>("log.txt", "logfile");
-        PushBack(sinks, stdout_sink, file_sink);
+	auto stdout_sink = std::make_shared<spdlog::sinks::stdout_sink_mt>();
+	auto file_sink = std::make_shared<spdlog::sinks::simple_file_sink_mt>("log.txt", "logfile");
+	PushBack(sinks, stdout_sink, file_sink);
 
-        console = std::make_shared<spdlog::logger>("console", std::begin(sinks), std::end(sinks));
+	console = std::make_shared<spdlog::logger>("console", std::begin(sinks), std::end(sinks));
 
-        console->set_level(spdlog::level::level_enum::trace);
-        console->flush_on(spdlog::level::level_enum::trace);
+	console->set_level(spdlog::level::level_enum::trace);
+	console->flush_on(spdlog::level::level_enum::trace);
 
-        spdlog::register_logger(console);
-        spdlog::set_pattern("[%D %T.%e] [%l] %v");
+	spdlog::register_logger(console);
+	spdlog::set_pattern("[%D %T.%e] [%l] %v");
     } catch(const spdlog::spdlog_ex &ex) {
-        std::cout << "Failed to initialize spdlog: " << ex.what() << '/n';
+	std::cout << "Failed to initialize spdlog: " << ex.what() << '/n';
     }
 }
 

@@ -26,7 +26,7 @@ void ImGuiCall(const pn::string &name, float *value, float min, float max, ui::d
 template <>
 void ImGuiCall<pn::mat4f *, float, ui::transform_t>(const pn::string &name, pn::mat4f *value,
                                                     float min, float max, ui::transform_t s) {
-    pn::vec4f translation, scale;
+    pn::vec4f      translation, scale;
     pn::quaternion rotation;
     // Decompose(*value, translation, rotation, scale);
 
@@ -35,8 +35,8 @@ void ImGuiCall<pn::mat4f *, float, ui::transform_t>(const pn::string &name, pn::
     ImGuiCall(name + " rotation", &rotation, -10.0f, 10.0f, ui::quaternion_t());
     // ImGui::SliderFloat4((name + " rotation").c_str(), (float*) &rotation, min, max);
     //*value = DirectX::XMMatrixScalingFromVector(scale) *
-    //DirectX::XMMatrixRotationQuaternion(rotation) *
-    //DirectX::XMMatrixTranslationFromVector(translation);
+    // DirectX::XMMatrixRotationQuaternion(rotation) *
+    // DirectX::XMMatrixTranslationFromVector(translation);
 }
 
 namespace pn {
@@ -46,7 +46,7 @@ namespace gui {
 float GetDragSpeed() {
     float DRAG_SPEED = NORMAL_DRAG_SPEED;
     if(pn::input::GetKeyState(pn::input::input_key::CONTROL) == pn::input::key_state::PRESSED)
-        DRAG_SPEED = SLOW_DRAG_SPEED;
+	DRAG_SPEED = SLOW_DRAG_SPEED;
     return DRAG_SPEED;
 }
 
@@ -79,52 +79,52 @@ void DragRotation(const char *label, quaternion *q, vec3f x, vec3f y, vec3f z,
 
     // this is a mess, lots of inlining imgui functions
     using namespace ImGui;
-    ImGuiContext &g    = *GImGui;
-    float return_delta = 0.0f;
+    ImGuiContext &g            = *GImGui;
+    float         return_delta = 0.0f;
     BeginGroup();
     PushID(label);
-    ImGuiWindow *window     = ImGui::GetCurrentWindow();
-    const ImGuiStyle &style = GImGui->Style;
-    auto w_full             = ImGui::CalcItemWidth();
-    int components          = 3;
-    const float w_item_one =
+    ImGuiWindow *     window     = ImGui::GetCurrentWindow();
+    const ImGuiStyle &style      = GImGui->Style;
+    auto              w_full     = ImGui::CalcItemWidth();
+    int               components = 3;
+    const float       w_item_one =
         ImMax(1.0f, (float)(int)((w_full - (style.ItemInnerSpacing.x) * (components - 1)) /
                                  (float)components));
     const float w_item_last = ImMax(
         1.0f, (float)(int)(w_full - (w_item_one + style.ItemInnerSpacing.x) * (components - 1)));
     window->DC.ItemWidthStack.push_back(w_item_last);
     for(int i = 0; i < components - 1; i++)
-        window->DC.ItemWidthStack.push_back(w_item_one);
+	window->DC.ItemWidthStack.push_back(w_item_one);
     window->DC.ItemWidth = window->DC.ItemWidthStack.back();
 
     {
-        PushID(0);
-        float xr = ImGui::DeltaDragFloat("##v", &euler.x);
-        if(xr != 0.0f)
-            *q *= AxisAngleToQuaternion(x, xr * ROT_SCALE);
-        SameLine(0, g.Style.ItemInnerSpacing.x);
-        PopID();
-        PopItemWidth();
+	PushID(0);
+	float xr = ImGui::DeltaDragFloat("##v", &euler.x);
+	if(xr != 0.0f)
+	    *q *= AxisAngleToQuaternion(x, xr * ROT_SCALE);
+	SameLine(0, g.Style.ItemInnerSpacing.x);
+	PopID();
+	PopItemWidth();
     }
 
     {
-        PushID(1);
-        float xy = ImGui::DeltaDragFloat("##v", &euler.y);
-        if(xy != 0.0f)
-            *q *= AxisAngleToQuaternion(y, xy * ROT_SCALE);
-        SameLine(0, g.Style.ItemInnerSpacing.x);
-        PopID();
-        PopItemWidth();
+	PushID(1);
+	float xy = ImGui::DeltaDragFloat("##v", &euler.y);
+	if(xy != 0.0f)
+	    *q *= AxisAngleToQuaternion(y, xy * ROT_SCALE);
+	SameLine(0, g.Style.ItemInnerSpacing.x);
+	PopID();
+	PopItemWidth();
     }
 
     {
-        PushID(2);
-        float xz = ImGui::DeltaDragFloat("##v", &euler.z);
-        if(xz != 0.0f)
-            *q *= AxisAngleToQuaternion(z, xz * ROT_SCALE);
-        SameLine(0, g.Style.ItemInnerSpacing.x);
-        PopID();
-        PopItemWidth();
+	PushID(2);
+	float xz = ImGui::DeltaDragFloat("##v", &euler.z);
+	if(xz != 0.0f)
+	    *q *= AxisAngleToQuaternion(z, xz * ROT_SCALE);
+	SameLine(0, g.Style.ItemInnerSpacing.x);
+	PopID();
+	PopItemWidth();
     }
 
     PopID();

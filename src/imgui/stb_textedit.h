@@ -707,7 +707,7 @@ retry:
             STB_TEXTEDIT_CHARTYPE ch = (STB_TEXTEDIT_CHARTYPE) c;
 
             // can't add newline in single-line mode
-            if (c == '/n' && state->single_line)
+            if (c == '\n' && state->single_line)
                break;
 
             if (state->insert_mode && !STB_TEXT_HAS_SELECTION(state) && state->cursor < STB_TEXTEDIT_STRINGLEN(str)) {
